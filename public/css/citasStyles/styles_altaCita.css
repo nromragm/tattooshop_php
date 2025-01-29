@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(187, 112, 112);
+    background-color: rgb(220, 220, 220);
 
 }
 
@@ -30,6 +30,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main__form-plantilla-error {
+    box-shadow: 0px 0px 7px 7px #e32227 !important;
 }
 
 .form-plantilla__container {

@@ -16,7 +16,7 @@
 <body>
 
     <main class="body__main">
-        <form class="main__form-plantilla" action="/tattooshop_php/citas/alta" method="post">
+        <form class="main__form-plantilla <?= isset($errores) && !empty($errores) ? "main__form-plantilla-error" : "" ?>" action="/tattooshop_php/citas/alta" method="post">
             <div class="form-plantilla__container">
                 <div class="form-group">
                     <label for="input_id">Id</label>
@@ -25,7 +25,7 @@
                         id="input_id" name="input_id"
                         aria-describedby="id"
                         placeholder="Introduce el id">
-                    <?php if (isset($errores) && isset($errores["error_id"])): ?><small id="idError" class="form-text text-danger"><?= $errores["error_id"] ?></small><?php endif; ?>
+                    <?php if (!empty($errores) && isset($errores["error_id"])): ?><small id="idError" class="form-text text-danger fw-bold"><?= $errores["error_id"] ?></small><?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label for="input_descripcion">Descripcion</label>
@@ -35,6 +35,7 @@
                         name="input_descripcion"
                         aria-describedby="descripcion"
                         placeholder="Introduce tu idea">
+                    <?php if (!empty($errores) && isset($errores["error_descripcion"])): ?><small id="descripcionError" class="form-text text-danger fw-bold"><?= $errores["error_descripcion"] ?></small><?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label for="input_fecha_cita">Fecha y hora para la cita</label>
@@ -44,6 +45,8 @@
                         name="input_fecha_cita"
                         aria-describedby="fechacita"
                         placeholder="Introduce la fecha y hora">
+                    <?php if (!empty($errores) && isset($errores["error_fechaCita"])): ?><small id="fechaCitaError" class="form-text text-danger fw-bold"><?= $errores["error_fechaCita"] ?></small><?php endif; ?>
+
                 </div>
                 <div class="form-group">
                     <label for="input_cliente">Nombre cliente</label>
@@ -52,6 +55,7 @@
                         id="input_cliente"
                         name="input_cliente"
                         placeholder="Nombre cliente">
+                    <?php if (!empty($errores) && isset($errores["error_cliente"])): ?><small id="clienteError" class="form-text text-danger fw-bold"><?= $errores["error_cliente"] ?></small><?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label for="input_tatuador">Nombre tatuador</label>
@@ -60,6 +64,7 @@
                         id="input_tatuador"
                         name="input_tatuador"
                         placeholder="Nombre tatuador">
+                    <?php if (!empty($errores) && isset($errores["error_tatuador"])): ?><small id="tatuadorError" class="form-text text-danger fw-bold"><?= $errores["error_tatuador"] ?></small><?php endif; ?>
                 </div>
                 <div class="container__btns-form">
                     <button type="submit" class="btn btn-primary btns-form__btn-enviar">Enviar</button>
@@ -67,6 +72,9 @@
                 </div>
             </div>
         </form>
+        <?php if (!empty($errores) && isset($errores["error_db"])): ?>
+            <p id="bdError" class="text-danger"><?= $errores["error_db"] ?></p>
+        <?php endif; ?>
     </main>
 </body>
 
