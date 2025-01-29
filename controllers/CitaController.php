@@ -51,6 +51,7 @@
                 if($input_fecha_cita == "") {
                     $errores["error_fechaCita"] = "La fecha de la cita es obligatoria";
                 }
+                
                 if($input_cliente == "") {
                     $errores["error_cliente"] = "El campo cliente  es obligatorio";
                 }
@@ -76,7 +77,7 @@
 
                 if($operacionExitosa) {
                     // LLAMAR A UNA PÁGINA QUE MUESTRE UN MENSAJE DE ÉXITO
-                    echo "<h1>CITA REGISTRADA</h1>";
+                    require_once "./views/citasViews/AltaCitaCorrectaView.php";
                 } else {
                     // LLAMAR A ALGÚN SITIO Y MOSTRAR UN MENSAJE DE ERROR
                     $errores["error_db"] = "Error al insertar la cita, intentelo de nuevo más tarde";
